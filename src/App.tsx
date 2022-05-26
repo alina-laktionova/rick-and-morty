@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Characters from "./components/pages/Characters/Characters";
+import NavPanel from "./components/NavPanel";
+import {Routes, Route} from 'react-router-dom';
+import MyWatchList from "./components/pages/MyWatchList/MyWatchList";
+import {Box} from "@mui/material";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+    return (
+        <>
+            <NavPanel/>
+            <Routes>
+                <Route path='/' element={<Characters/>}/>
+                <Route path='/characters' element={<Characters/>}/>
+                <Route path='/my-watch-list' element={<MyWatchList/>}/>
+                <Route path="*" element={<Box>Page not found</Box>}/>
+            </Routes>
+        </>
+
+    );
 }
 
 export default App;
