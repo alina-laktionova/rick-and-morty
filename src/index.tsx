@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import {ThemeProvider} from "@mui/material";
 import {theme} from "./config/muiCustomTheme";
-import {HashRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
 
@@ -15,9 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>
-            <HashRouter>
+            <BrowserRouter>
                 <App/>
-            </HashRouter>
+            </BrowserRouter>
         </ThemeProvider>
     </Provider>
 );
