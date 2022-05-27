@@ -1,7 +1,7 @@
 import {
     Container,
     Grid,
-    Pagination,
+    Pagination, Typography,
 } from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {Character} from "../../models/Character";
@@ -10,6 +10,7 @@ import {useSelector} from "react-redux";
 import {State, useTypedDispatch} from "../../store/store";
 import {filterCharacters, getCharacters, goToPage} from "../../store/characters/charThunks";
 import CharacterFilters from "./CharacterFilters";
+import Loader from "../library/Loader";
 
 
 export default function Characters() {
@@ -17,13 +18,14 @@ export default function Characters() {
     const dispatch = useTypedDispatch()
 
     const [filters, setFilters] = useState<string>('')
+    const [badFilters, setBadFilters] = useState<boolean>(false)
 
     useEffect(() => {
         dispatch(getCharacters())
     }, [])
 
     useEffect(() => {
-        dispatch(filterCharacters(filters))
+        dispatch(filterCharacters(filters, setBadFilters))
     }, [filters])
 
     function getCharacterCards(characters: Character[]) {
@@ -49,16 +51,23 @@ export default function Characters() {
                           paddingY: '30px'
                       }}>
         {characters.length === 0 &&
-            <h3>Loading...</h3>
+            <Loader/>
         }
 
         <CharacterFilters setFilters={setFilters}/>
 
-        {characters.length > 0 &&
+        {badFilters &&
+            <Typography variant={'h5'} textAlign={"center"}>
+                There are no characters matching the filter
+            </Typography>
+        }
+        {!badFilters && characters.length > 0 &&
             <Grid container spacing={3} mb={'30px'}>
                 {getCharacterCards(characters)}
             </Grid>
         }
-        <Pagination count={info.pages} page={currentPage} onChange={handleChangePage}/>
+        {!badFilters && info.pages > 1 &&
+            <Pagination count={info.pages} page={currentPage} onChange={handleChangePage}/>
+        }
     </Container>
 }

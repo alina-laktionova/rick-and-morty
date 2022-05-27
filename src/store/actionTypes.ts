@@ -5,6 +5,7 @@ export type ActionType = {
 
 //characters
 export const GET_CHARACTERS = 'GET_CHARACTERS'
+export const CLEAR_CHARACTERS = 'CLEAR_CHARACTERS'
 
 //episodes
 export const GET_EPISODES = 'GET_EPISODES'

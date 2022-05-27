@@ -20,7 +20,8 @@ export default function ModalWindow(props: Props) {
             left: '50%',
             transform: 'translate(-50%, -50%)',
             boxShadow: 24,
-            padding: '10px'
+            padding: '10px',
+            width: '300px'
         }}>
             <CardMedia
                 component={"img"}

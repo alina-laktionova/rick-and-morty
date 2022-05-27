@@ -1,4 +1,4 @@
-import {ActionType, GET_CHARACTERS} from "../actionTypes";
+import {ActionType, CLEAR_CHARACTERS, GET_CHARACTERS} from "../actionTypes";
 import {Character} from "../../models/Character";
 import {Info, infoInitialState} from "../../models/Info";
 
@@ -20,6 +20,8 @@ export default function charReducer(state: CharactersState = initialState, actio
     switch (type) {
         case GET_CHARACTERS:
             return {...state, characters: payload.characters, info: payload.info, currentPage: payload.currentPage}
+        case CLEAR_CHARACTERS:
+            return initialState
         default:
             return state
     }

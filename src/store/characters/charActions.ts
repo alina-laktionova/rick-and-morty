@@ -1,5 +1,5 @@
 import {Character} from "../../models/Character";
-import {GET_CHARACTERS} from "../actionTypes";
+import {CLEAR_CHARACTERS, GET_CHARACTERS} from "../actionTypes";
 import {Info} from "../../models/Info";
 
 export function getCharactersAction (characters: Character[], info: Info, currentPage: number) {
@@ -10,6 +10,12 @@ export function getCharactersAction (characters: Character[], info: Info, curren
             info: info,
             currentPage: currentPage
         }
+    }
+}
+
+export function clearCharactersAction() {
+    return {
+        type: CLEAR_CHARACTERS,
     }
 }
 

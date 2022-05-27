@@ -18,9 +18,9 @@ export default function CharacterCard(props: Props) {
         <Typography variant="h5" textAlign={'center'}>
             {character.name}
         </Typography>
-        <Typography>status: {character.status}</Typography>
-        <Typography>gender: {character.gender}</Typography>
-        <Typography>species: {character.species}</Typography>
+        <Typography textAlign={'center'}>status: {character.status}</Typography>
+        <Typography textAlign={'center'}>gender: {character.gender}</Typography>
+        <Typography textAlign={'center'}>species: {character.species}</Typography>
     </>
 
     return <>
@@ -49,10 +49,10 @@ export default function CharacterCard(props: Props) {
         <ModalWindow image={character.image} name={character.name} open={open} handleClose={handleClose}
                      cardContent={<>
                          {charInfo}
-                         {character.type && <Typography>type: {character.type}</Typography>}
-                         <Typography>origin: {character.origin.name}</Typography>
-                         <Typography>location: {character.location.name}</Typography>
-                         <Typography>appearance in episodes: {character.episode.length}</Typography>
+                         {character.type && <Typography textAlign={'center'}>type: {character.type}</Typography>}
+                         <Typography textAlign={'center'}>origin: {character.origin.name}</Typography>
+                         <Typography textAlign={'center'}>location: {character.location.name}</Typography>
+                         <Typography textAlign={'center'}>appearance in episodes: {character.episode.length}</Typography>
                      </>}/>
     </>
 }
