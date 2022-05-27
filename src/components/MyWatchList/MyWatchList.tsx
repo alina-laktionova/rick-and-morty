@@ -77,7 +77,7 @@ export default function MyWatchList() {
 
             <SelectField options={episodeOptions} label={'Episode'} value={value} setValue={setValue}/>
 
-            <Button variant={"contained"} onClick={addEpisodeToList}>
+            <Button disableElevation variant={"contained"} onClick={addEpisodeToList}>
                 <AddIcon/>
             </Button>
         </Box>
