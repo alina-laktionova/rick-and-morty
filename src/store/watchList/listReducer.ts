@@ -1,7 +1,7 @@
 import {ActionType, ADD_ITEM, CH_ITEM_STATUS, DELETE_ITEM, GET_LIST} from "../actionTypes";
-import {WatchItem} from "../../models/WatchItem";
+import {TodoItem} from "../../models/TodoItem";
 
-export type ListState = WatchItem[]
+export type ListState = TodoItem[]
 
 const init: ListState = []
 
@@ -16,7 +16,7 @@ export default function listReducer(state: ListState = init, action: ActionType)
         case CH_ITEM_STATUS:
             return changeItemStatus(state, payload.id, payload.isWatched)
         case DELETE_ITEM:
-            return state.filter((item: WatchItem) => item.id !== payload.id)
+            return state.filter((item: TodoItem) => item.id !== payload.id)
         default:
             return state
     }
@@ -24,14 +24,14 @@ export default function listReducer(state: ListState = init, action: ActionType)
 
 
 function addItem(list: ListState, id: string, text: string): ListState {
-    if(!list.find((item: WatchItem) => item.id === id))
-        return [...list, {id: id, text: text, isWatched: false}]
+    if(!list.find((item: TodoItem) => item.id === id))
+        return [...list, {id: id, text: text, isDone: false}]
     else return list
 }
 
 function changeItemStatus(list: ListState, id: string, newStatus: boolean): ListState {
     return list.map((item) => {
-        if(item.id === id) return {...item, isWatched: newStatus}
+        if(item.id === id) return {...item, isDone: newStatus}
         return item
     })
 }

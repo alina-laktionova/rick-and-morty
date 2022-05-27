@@ -1,7 +1,7 @@
 import {Card, CardActionArea, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import {Character} from "../../models/Character";
 import {useState} from "react";
-import {CharacterPopup} from "./CharacterPopup";
+import ModalWindow from "../library/ModalWindow";
 
 type Props = {
     character: Character
@@ -13,6 +13,15 @@ export default function CharacterCard(props: Props) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const charInfo: JSX.Element = <>
+        <Typography variant="h5" textAlign={'center'}>
+            {character.name}
+        </Typography>
+        <Typography>status: {character.status}</Typography>
+        <Typography>gender: {character.gender}</Typography>
+        <Typography>species: {character.species}</Typography>
+    </>
 
     return <>
         <Grid item xs={12} sm={6} md={4} lg={3}
@@ -32,16 +41,18 @@ export default function CharacterCard(props: Props) {
                         alignItems: 'center',
                         padding: '10px'
                     }}>
-                        <Typography variant="h5" textAlign={'center'}>
-                            {character.name}
-                        </Typography>
-                        <Typography>species: {character.species}</Typography>
-                        <Typography>gender: {character.gender}</Typography>
-                        <Typography>status: {character.status}</Typography>
+                        {charInfo}
                     </CardContent>
                 </CardActionArea>
             </Card>
         </Grid>
-        <CharacterPopup open={open} character={character} handleClose={handleClose}/>
+        <ModalWindow image={character.image} name={character.name} open={open} handleClose={handleClose}
+                     cardContent={<>
+                         {charInfo}
+                         {character.type && <Typography>type: {character.type}</Typography>}
+                         <Typography>origin: {character.origin.name}</Typography>
+                         <Typography>location: {character.location.name}</Typography>
+                         <Typography>appearance in episodes: {character.episode.length}</Typography>
+                     </>}/>
     </>
 }

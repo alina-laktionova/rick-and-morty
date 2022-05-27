@@ -1,4 +1,4 @@
-import {WatchItem} from "../../models/WatchItem";
+import {TodoItem} from "../../models/TodoItem";
 import {Checkbox, IconButton, ListItem, ListItemText, Typography} from "@mui/material";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import {useTypedDispatch} from "../../store/store";
@@ -6,10 +6,10 @@ import {changeItemStatusAction, deleteItemAction} from "../../store/watchList/li
 
 
 type Props = {
-    item: WatchItem
+    item: TodoItem
 }
 
-export default function WatchListItem(props: Props) {
+export default function TodoListItem(props: Props) {
     const {item} = props
 
     const dispatch = useTypedDispatch()
@@ -23,11 +23,11 @@ export default function WatchListItem(props: Props) {
     }
 
     return <ListItem>
-        <Checkbox checked={item.isWatched}
-                  onChange={() => changeStatus(item.id, !item.isWatched)}/>
+        <Checkbox checked={item.isDone}
+                  onChange={() => changeStatus(item.id, !item.isDone)}/>
         <ListItemText primary={
             <Typography variant={"body1"}
-                        sx={{textDecoration: item.isWatched ? 'line-through' : 'none'}}>
+                        sx={{textDecoration: item.isDone ? 'line-through' : 'none'}}>
                 {item.text}
             </Typography>
         }/>
