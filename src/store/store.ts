@@ -1,17 +1,23 @@
 import {configureStore} from '@reduxjs/toolkit';
-import charactersReducer from "./charactersReducer";
-import {Character} from "../models/Character";
+import charReducer, {CharactersState} from "./characters/charReducer";
 import {useDispatch} from "react-redux";
+import epReducer, {EpisodesState} from "./episodes/epReducer";
+import listReducer, {ListState} from "./watchList/listReducer";
 
 export type State = {
-    characters: Character[]
+    characters: CharactersState,
+    episodes: EpisodesState,
+    list: ListState
 }
 
 export const store = configureStore({
     reducer: {
-        characters: charactersReducer
+        characters: charReducer,
+        episodes: epReducer,
+        list: listReducer
     }
 })
 
+
 export type AppDispatch = typeof store.dispatch
-export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useTypedDispatch = () => useDispatch<AppDispatch>()
