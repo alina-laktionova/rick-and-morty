@@ -1,7 +1,7 @@
 import {ADD_ITEM, CH_ITEM_STATUS, DELETE_ITEM, GET_LIST} from "../actionTypes";
-import {TodoItem} from "../../models/TodoItem";
+import {WatchItem} from "../../models/WatchItem";
 
-export function getListFromStorage(list: TodoItem[]) {
+export function getListFromStorage(list: WatchItem[]) {
     return {
         type: GET_LIST,
         payload: {

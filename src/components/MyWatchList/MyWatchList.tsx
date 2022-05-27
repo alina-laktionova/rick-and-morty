@@ -7,8 +7,8 @@ import {Episode} from "../../models/Episode";
 import {ListState} from "../../store/watchList/listReducer";
 import {addItemAction, getListFromStorage} from "../../store/watchList/listActions";
 import {STORAGE_KEY} from "../../config/constants";
-import TodoListItem from "./TodoListItem";
-import {TodoItem} from "../../models/TodoItem";
+import WatchListItem from "./WatchListItem";
+import {WatchItem} from "../../models/WatchItem";
 import AddIcon from "@mui/icons-material/Add";
 import SelectField from "../library/SelectField";
 
@@ -22,16 +22,6 @@ export default function MyWatchList() {
     const [episodeOptions, setEpisodeOptions] = useState<string[]>([])
     const [value, setValue] = useState<string | null>(null);
 
-    function addEpisodeToList() {
-        if (value) {
-            dispatch(addItemAction(value.substring(0, 6), value))
-            setValue(null)
-        }
-    }
-
-    useEffect(() => {
-        setEpisodeOptions(getNames(episodes))
-    }, [episodes])
 
     useEffect(() => {
         dispatch(getAllEpisodes())
@@ -45,13 +35,22 @@ export default function MyWatchList() {
     }, [])
 
     useEffect(() => {
+        setEpisodeOptions(getNames(episodes))
+    }, [episodes])
+
+
+    useEffect(() => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(list))
         setEpisodeOptions(getNames(episodes))
     }, [list]);
 
-    useEffect(() => {
-        console.log(episodeOptions)
-    }, [episodeOptions])
+
+    function addEpisodeToList() {
+        if (value) {
+            dispatch(addItemAction(value.substring(0, 6), value))
+            setValue(null)
+        }
+    }
 
     function getNames(episodes: Episode[]): string[] {
         return episodes.reduce((res: string[], episode: Episode) => {
@@ -88,8 +87,8 @@ export default function MyWatchList() {
             width: '100%',
             minWidth: '300px',
         }}>
-            {list.map((item: TodoItem, index: number) =>
-                <TodoListItem item={item} key={index}/>
+            {list.map((item: WatchItem, index: number) =>
+                <WatchListItem item={item} key={index}/>
             )}
         </List>
     </Container>
