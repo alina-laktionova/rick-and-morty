@@ -1,17 +1,17 @@
-import {ActionType, CLEAR_CHARACTERS, GET_CHARACTERS} from "../actionTypes";
-import {Character} from "../../models/Character";
-import {Info, infoInitialState} from "../../models/Info";
+import {ActionType, CLEAR_CHARACTERS, GET_CHARACTERS} from '../actionTypes'
+import {Character} from '../../models/Character'
+import {Info, infoInitialState} from '../../models/Info'
 
 export type CharactersState = {
-    characters: Character[],
-    info: Info,
+    characters: Character[]
+    info: Info
     currentPage: number
 }
 
 const initialState: CharactersState = {
     characters: [],
     info: infoInitialState,
-    currentPage: 0
+    currentPage: 0,
 }
 
 export default function charReducer(state: CharactersState = initialState, action: ActionType) {

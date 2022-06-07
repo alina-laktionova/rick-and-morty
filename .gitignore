@@ -28,4 +28,9 @@ yarn-error.log*
 *.iml
 *.ipr
 
+# Prettier Ignore artifacts:
+build
+coverage
+
+
 

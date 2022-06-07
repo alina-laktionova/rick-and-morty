@@ -1,7 +1,7 @@
-import {WatchItem} from "../../models/WatchItem";
-import {useTypedDispatch} from "../../store/store";
-import {changeItemStatusAction, deleteItemAction} from "../../store/watchList/listActions";
-import TodoItem from "../library/TodoItem";
+import {WatchItem} from '../../models/WatchItem'
+import {useTypedDispatch} from '../../store/store'
+import {changeItemStatusAction, deleteItemAction} from '../../store/watchList/listActions'
+import TodoItem from '../library/TodoItem'
 
 type Props = {
     item: WatchItem
@@ -20,6 +20,13 @@ export default function WatchListItem(props: Props) {
         dispatch(deleteItemAction(id))
     }
 
-    return <TodoItem id={item.id} text={item.text} isDone={item.isWatched}
-                     changeStatus={changeStatus} deleteItem={deleteItem}/>
+    return (
+        <TodoItem
+            id={item.id}
+            text={item.text}
+            isDone={item.isWatched}
+            changeStatus={changeStatus}
+            deleteItem={deleteItem}
+        />
+    )
 }

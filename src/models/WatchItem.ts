@@ -1,6 +1,5 @@
-
 export type WatchItem = {
-    id: string,
-    text: string,
+    id: string
+    text: string
     isWatched: boolean
 }

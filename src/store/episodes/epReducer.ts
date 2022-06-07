@@ -1,10 +1,10 @@
-import {ActionType, GET_EPISODES, GET_MULTIPLE_EPISODES} from "../actionTypes";
-import {Info, infoInitialState} from "../../models/Info";
-import {Episode} from "../../models/Episode";
+import {ActionType, GET_EPISODES, GET_MULTIPLE_EPISODES} from '../actionTypes'
+import {Info, infoInitialState} from '../../models/Info'
+import {Episode} from '../../models/Episode'
 
 export type EpisodesState = {
-    episodes: Episode[],
-    info: Info,
+    episodes: Episode[]
+    info: Info
 }
 
 const initialState: EpisodesState = {

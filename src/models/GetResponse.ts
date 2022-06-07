@@ -1,6 +1,6 @@
-import {Info} from "./Info";
+import {Info} from './Info'
 
 export type GetResponse = {
-    info: Info,
-    results: [],
+    info: Info
+    results: []
 }

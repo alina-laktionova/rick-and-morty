@@ -1,5 +1,5 @@
-import {ActionType, ADD_ITEM, CH_ITEM_STATUS, DELETE_ITEM, GET_LIST} from "../actionTypes";
-import {WatchItem} from "../../models/WatchItem";
+import {ActionType, ADD_ITEM, CH_ITEM_STATUS, DELETE_ITEM, GET_LIST} from '../actionTypes'
+import {WatchItem} from '../../models/WatchItem'
 
 export type ListState = WatchItem[]
 
@@ -22,16 +22,14 @@ export default function listReducer(state: ListState = init, action: ActionType)
     }
 }
 
-
 function addItem(list: ListState, id: string, text: string): ListState {
-    if(!list.find((item: WatchItem) => item.id === id))
-        return [...list, {id: id, text: text, isWatched: false}]
+    if (!list.find((item: WatchItem) => item.id === id)) return [...list, {id: id, text: text, isWatched: false}]
     else return list
 }
 
 function changeItemStatus(list: ListState, id: string, newStatus: boolean): ListState {
     return list.map((item) => {
-        if(item.id === id) return {...item, isWatched: newStatus}
+        if (item.id === id) return {...item, isWatched: newStatus}
         return item
     })
 }

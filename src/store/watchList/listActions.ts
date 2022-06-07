@@ -1,12 +1,12 @@
-import {ADD_ITEM, CH_ITEM_STATUS, DELETE_ITEM, GET_LIST} from "../actionTypes";
-import {WatchItem} from "../../models/WatchItem";
+import {ADD_ITEM, CH_ITEM_STATUS, DELETE_ITEM, GET_LIST} from '../actionTypes'
+import {WatchItem} from '../../models/WatchItem'
 
 export function getListFromStorage(list: WatchItem[]) {
     return {
         type: GET_LIST,
         payload: {
-            list: list
-        }
+            list: list,
+        },
     }
 }
 
@@ -16,7 +16,7 @@ export function addItemAction(id: string, text: string) {
         payload: {
             id: id,
             text: text,
-        }
+        },
     }
 }
 
@@ -25,8 +25,8 @@ export function changeItemStatusAction(id: string, isWatched: boolean) {
         type: CH_ITEM_STATUS,
         payload: {
             id: id,
-            isWatched: isWatched
-        }
+            isWatched: isWatched,
+        },
     }
 }
 
@@ -35,6 +35,6 @@ export function deleteItemAction(id: string) {
         type: DELETE_ITEM,
         payload: {
             id: id,
-        }
+        },
     }
 }
